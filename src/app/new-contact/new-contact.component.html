@@ -1,0 +1,63 @@
+
+<div class="container col-md-8 col-sm-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading">New Contact</div>
+    <div class="panel-body">
+      <div *ngIf="mode == 1">
+      <form  [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nom" class="control-label">Nom :</label>
+          <input type="text" id="nom" formControlName="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="prenom" class="control-label">Prenom :</label>
+          <input type="text" id="prenom" formControlName="prename" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="dt" class="control-label">dataNaissance :</label>
+          <input type="date" id="dt" formControlName="date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="idEmail" class="control-label">Email :</label>
+          <input type="text" id="idEmail" formControlName="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="idtel" class="control-label">Tel :</label>
+          <input type="number" id="idtel" formControlName="tel" class="form-control">
+          <span *ngIf="addForm.controls['tel'].invalid && addForm.controls['tel'].touched" class="alert alert-danger">
+            Tel is required
+          </span>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid" > Add Contact</button>
+      </form>
+      </div>
+      <div *ngIf="mode == 2">
+        <div class="form-group">
+          <label class="control-label">Id :</label>
+          <label> {{ contact.id}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nom :</label>
+          <label> {{ contact.nom}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Prenom :</label>
+          <label> {{ contact.prenom}}</label>
+        </div>
+        <div class="form-group">
+          <label  class="control-label">dataNaissance :</label>
+          <label> {{ contact.dateNaissance}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Email :</label>
+          <label> {{ contact.email}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Tel :</label>
+          <label> {{ contact.tel}}</label>
+        </div>
+        <button class="btn btn-primary" (click)="mode = 1">New Contact</button>
+      </div>
+    </div>
+  </div>
+</div>

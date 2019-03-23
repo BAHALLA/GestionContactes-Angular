@@ -1,0 +1,35 @@
+<p></p>
+<div class="container col-md-8 col-sm-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Contacts</div>
+      <div class="panel-body">
+        <form [formGroup]="rechercheForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="control-label" for="mcl">Mot cle : </label>
+            <input id="mcl" type="text" formControlName="mc">
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <p></p>
+          <table class="table table-striped">
+            <tr>
+              <th>ID</th><th>Nom</th><th>Prenom</th><th>Email</th><th>Tel</th>
+            </tr>
+
+            <tr *ngFor="let p of pageContacts?.content">
+              <td>{{p.id}}</td>
+              <td>{{p.nom}}</td>
+              <td>{{p.prenom}}</td>
+              <td>{{p.email}}</td>
+              <td>{{p.tel}}</td>
+            </tr>
+          </table>
+        <div class="container">
+            <ul class="nav nav-pills">
+              <li *ngFor="let p of pages;let i=index" [ngClass]="{'active' : i == page}"><a (click)="gotoPage(i)"
+                                                                                            class="cursorPointer">{{i}}</a></li>
+            </ul>
+        </div>
+      </div>
+  </div>
+</div>
